@@ -23,55 +23,62 @@ import edu.wpi.first.math.geometry.Transform3d;
 import edu.wpi.first.math.util.Units;
 
 public class VisionConstants {
-    // AprilTag layout
-    public static AprilTagFieldLayout aprilTagLayout = AprilTagFieldLayout.loadField(AprilTagFields.kDefaultField);
+  // AprilTag layout
+  public static AprilTagFieldLayout aprilTagLayout =
+      AprilTagFieldLayout.loadField(AprilTagFields.kDefaultField);
 
-    // Camera names, must match names configured on coprocessor
-    public static String camera0Name = "Left-Camera";
-    public static String camera1Name = "Right-Camera";
-    public static String camera2Name = "Back-Camera";
+  // Camera names, must match names configured on coprocessor
+  public static String camera0Name = "Left-Camera";
+  public static String camera1Name = "Right-Camera";
+  public static String camera2Name = "Back-Camera";
 
-    // Robot to camera transforms
-    // (Not used by Limelight, configure in web UI instead)
-    public static Transform3d robotToCamera0 = new Transform3d(
-            Inches.of(-3.493917),
-            Inches.of(12.989563),
-            Inches.of(7.935876),
-            new Rotation3d(Degrees.of(0), Degrees.of(-15.0), Degrees.of(90.0)));
-    public static Transform3d robotToCamera1 = new Transform3d(
-            Inches.of(1.493917),
-            Inches.of(-12.989563),
-            Inches.of(7.935876),
-            new Rotation3d(Degrees.of(0.0), Degrees.of(-15.0), Degrees.of(-90.0)));
-    public static Transform3d robotToCamera2 = new Transform3d(
-            Inches.of(-13.070107),
-            Inches.of(-6.984892),
-            Inches.of(7.939510),
-            new Rotation3d(Degrees.of(0), Degrees.of(-15.0), Degrees.of(180)));
+  // Robot to camera transforms
+  // (Not used by Limelight, configure in web UI instead)
+  public static Transform3d robotToCamera0 =
+      new Transform3d(
+          Inches.of(-3.493917),
+          Inches.of(12.989563),
+          Inches.of(7.935876),
+          new Rotation3d(Degrees.of(0), Degrees.of(-15.0), Degrees.of(90.0)));
+  public static Transform3d robotToCamera1 =
+      new Transform3d(
+          Inches.of(1.493917),
+          Inches.of(-12.989563),
+          Inches.of(7.935876),
+          new Rotation3d(Degrees.of(0.0), Degrees.of(-15.0), Degrees.of(-90.0)));
+  public static Transform3d robotToCamera2 =
+      new Transform3d(
+          Inches.of(-13.070107),
+          Inches.of(-6.984892),
+          Inches.of(7.939510),
+          new Rotation3d(Degrees.of(0), Degrees.of(-15.0), Degrees.of(180)));
 
-    public static Transform3d turretToLimelight = new Transform3d(
-            Units.inchesToMeters(-7.773307),
-            0.0,
-            Units.inchesToMeters(4.728530),
-            new Rotation3d(0, Units.degreesToRadians(-30.0), Units.degreesToRadians(-180.0)));
+  public static Transform3d turretToLimelight =
+      new Transform3d(
+          Units.inchesToMeters(-7.773307),
+          0.0,
+          Units.inchesToMeters(4.728530),
+          new Rotation3d(0, Units.degreesToRadians(-30.0), Units.degreesToRadians(-180.0)));
 
-    // Basic filtering thresholds
-    public static double maxAmbiguity = 0.3;
-    public static double maxZError = 0.75;
+  // Basic filtering thresholds
+  public static double maxAmbiguity = 0.3;
+  public static double maxZError = 0.75;
 
-    // Standard deviation baselines, for 1 meter distance and 1 tag
-    // (Adjusted automatically based on distance and # of tags)
-    public static double linearStdDevBaseline = 0.0662390368; // Meters
-    public static double angularStdDevBaseline = 0.06; // Radians
+  // Standard deviation baselines, for 1 meter distance and 1 tag
+  // (Adjusted automatically based on distance and # of tags)
+  public static double linearStdDevBaseline = 0.0662390368; // Meters
+  public static double angularStdDevBaseline = 0.06; // Radians
 
-    // Standard deviation multipliers for each camera
-    // (Adjust to trust some cameras more than others)
-    public static double[] cameraStdDevFactors = new double[] {
-            1.0, // Camera 0
-            1.0 // Camera 1
-    };
+  // Standard deviation multipliers for each camera
+  // (Adjust to trust some cameras more than others)
+  public static double[] cameraStdDevFactors =
+      new double[] {
+        1.0, // Camera 0
+        1.0 // Camera 1
+      };
 
-    // Multipliers to apply for MegaTag 2 observations
-    public static double linearStdDevMegatag2Factor = 0.5; // More stable than full 3D solve
-    public static double angularStdDevMegatag2Factor = Double.POSITIVE_INFINITY; // No rotation data available
+  // Multipliers to apply for MegaTag 2 observations
+  public static double linearStdDevMegatag2Factor = 0.5; // More stable than full 3D solve
+  public static double angularStdDevMegatag2Factor =
+      Double.POSITIVE_INFINITY; // No rotation data available
 }
