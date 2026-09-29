@@ -26,10 +26,10 @@ import frc.robot.subsystems.drive.GyroIOPigeon2;
 import frc.robot.subsystems.drive.ModuleIO;
 import frc.robot.subsystems.drive.ModuleIOSim;
 import frc.robot.subsystems.drive.ModuleIOTalonFX;
-import frc.robot.subsystems.intake.Intake;
+/*import frc.robot.subsystems.intake.Intake;
 import frc.robot.subsystems.intake.Intake.IntakeGoal;
 import frc.robot.subsystems.intake.IntakeIO;
-import frc.robot.subsystems.intake.IntakeIOTalonFX;
+import frc.robot.subsystems.intake.IntakeIOTalonFX;*/
 import frc.robot.subsystems.vision.Vision;
 import frc.robot.subsystems.vision.VisionConstants;
 import frc.robot.subsystems.vision.VisionIO;
@@ -46,22 +46,22 @@ import org.littletonrobotics.junction.networktables.LoggedDashboardChooser;
 public class RobotContainer {
   // Subsystems
   private final Drive drive;
-  private final Intake intake;
+  //private final Intake intake;
   private final Vision vision;
 
   // Controller
   private final CommandXboxController controller = new CommandXboxController(0);
-  private final CommandXboxController controller2 = new CommandXboxController(1);
+  //private final CommandXboxController controller2 = new CommandXboxController(1);
 
   // Dashboard inputs
   private final LoggedDashboardChooser<Command> autoChooser;
   private Trigger lockToAngleTrigger = controller.a();
   private Trigger lockWheelsTrigger = controller.x();
   private Trigger resetGyroTrigger = controller.b();
-  private Trigger deployIntakeTrigger = controller2.b();
+  /*private Trigger deployIntakeTrigger = controller2.b();
   private Trigger retractIntakeTrigger = controller2.b().and(controller2.rightBumper());
   private Trigger reverseIntakeTrigger = controller2.leftBumper();
-  private Trigger stopIntakeTrigger = controller2.y();
+  private Trigger stopIntakeTrigger = controller2.y();*/
 
   /** The container for the robot. Contains subsystems, OI devices, and commands. */
   public RobotContainer() {
@@ -78,16 +78,16 @@ public class RobotContainer {
                 new ModuleIOTalonFX(TunerConstants.BackLeft),
                 new ModuleIOTalonFX(TunerConstants.BackRight));
 
-        intake = new Intake(new IntakeIOTalonFX());
+        //intake = new Intake(new IntakeIOTalonFX());
         vision =
             new Vision(
                 drive,
                 new VisionIOPhotonVision(
                     VisionConstants.camera0Name, VisionConstants.robotToCamera0),
                 new VisionIOPhotonVision(
-                    VisionConstants.camera1Name, VisionConstants.robotToCamera1),
-                new VisionIOPhotonVision(
-                    VisionConstants.camera2Name, VisionConstants.robotToCamera2));
+                    VisionConstants.camera1Name, VisionConstants.robotToCamera1)
+                /*new VisionIOPhotonVision(
+                    VisionConstants.camera2Name, VisionConstants.robotToCamera2)*/);
 
         // The ModuleIOTalonFXS implementation provides an example implementation for
         // TalonFXS controller connected to a CANdi with a PWM encoder. The
@@ -118,7 +118,7 @@ public class RobotContainer {
                 new ModuleIOSim(TunerConstants.BackLeft),
                 new ModuleIOSim(TunerConstants.BackRight));
         vision = new Vision(drive, new VisionIO() {});
-        intake = new Intake(new IntakeIO() {});
+        //intake = new Intake(new IntakeIO() {});
         break;
 
       default:
@@ -131,7 +131,7 @@ public class RobotContainer {
                 new ModuleIO() {},
                 new ModuleIO() {});
         vision = new Vision(drive, new VisionIO() {});
-        intake = new Intake(new IntakeIO() {});
+       //intake = new Intake(new IntakeIO() {});
         break;
     }
 
@@ -157,7 +157,7 @@ public class RobotContainer {
     // Configure the button bindings
     configureButtonBindings();
 
-    addSysIdOptions("Intake", intake);
+    //addSysIdOptions("Intake", intake);
   }
 
   private void addSysIdOptions(String name, Identifiable subsystem) {
@@ -202,12 +202,13 @@ public class RobotContainer {
                 () -> drive.setPose(new Pose2d(drive.getPose().getTranslation(), Rotation2d.kZero)),
                 drive)
             .ignoringDisable(true));
-    deployIntakeTrigger.onTrue(intake.setGoalCommand(IntakeGoal.DEPLOY));
+   /* deployIntakeTrigger.onTrue(intake.setGoalCommand(IntakeGoal.DEPLOY));
 
     retractIntakeTrigger.onTrue(intake.setGoalCommand(IntakeGoal.STOW));
     reverseIntakeTrigger.onTrue(intake.setGoalCommand(IntakeGoal.EJECT));
 
     stopIntakeTrigger.onTrue(intake.setGoalCommand(IntakeGoal.IDLE));
+    */
   }
 
   /**
