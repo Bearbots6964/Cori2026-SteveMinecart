@@ -30,10 +30,10 @@ import frc.robot.subsystems.drive.ModuleIOTalonFX;
 import frc.robot.subsystems.intake.Intake.IntakeGoal;
 import frc.robot.subsystems.intake.IntakeIO;
 import frc.robot.subsystems.intake.IntakeIOTalonFX;*/
-import frc.robot.subsystems.vision.Vision;
+/*import frc.robot.subsystems.vision.Vision;
 import frc.robot.subsystems.vision.VisionConstants;
 import frc.robot.subsystems.vision.VisionIO;
-import frc.robot.subsystems.vision.VisionIOPhotonVision;
+import frc.robot.subsystems.vision.VisionIOPhotonVision;*/
 import frc.robot.util.Identifiable;
 import org.littletonrobotics.junction.networktables.LoggedDashboardChooser;
 
@@ -47,7 +47,7 @@ public class RobotContainer {
   // Subsystems
   private final Drive drive;
   //private final Intake intake;
-  private final Vision vision;
+  //private final Vision vision;
 
   // Controller
   private final CommandXboxController controller = new CommandXboxController(0);
@@ -79,7 +79,7 @@ public class RobotContainer {
                 new ModuleIOTalonFX(TunerConstants.BackRight));
 
         //intake = new Intake(new IntakeIOTalonFX());
-        vision =
+      /*  vision =
             new Vision(
                 drive,
                 new VisionIOPhotonVision(
@@ -87,7 +87,7 @@ public class RobotContainer {
                 new VisionIOPhotonVision(
                     VisionConstants.camera1Name, VisionConstants.robotToCamera1)
                 /*new VisionIOPhotonVision(
-                    VisionConstants.camera2Name, VisionConstants.robotToCamera2)*/);
+                    VisionConstants.camera2Name, VisionConstants.robotToCamera2));*/
 
         // The ModuleIOTalonFXS implementation provides an example implementation for
         // TalonFXS controller connected to a CANdi with a PWM encoder. The
@@ -117,7 +117,7 @@ public class RobotContainer {
                 new ModuleIOSim(TunerConstants.FrontRight),
                 new ModuleIOSim(TunerConstants.BackLeft),
                 new ModuleIOSim(TunerConstants.BackRight));
-        vision = new Vision(drive, new VisionIO() {});
+       // vision = new Vision(drive, new VisionIO() {});
         //intake = new Intake(new IntakeIO() {});
         break;
 
@@ -130,7 +130,7 @@ public class RobotContainer {
                 new ModuleIO() {},
                 new ModuleIO() {},
                 new ModuleIO() {});
-        vision = new Vision(drive, new VisionIO() {});
+        //vision = new Vision(drive, new VisionIO() {});
        //intake = new Intake(new IntakeIO() {});
         break;
     }
